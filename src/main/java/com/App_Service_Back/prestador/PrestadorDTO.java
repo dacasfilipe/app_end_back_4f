@@ -1,7 +1,6 @@
 package com.App_Service_Back.prestador;
 
 import com.App_Service_Back.endereco.Endereco;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;

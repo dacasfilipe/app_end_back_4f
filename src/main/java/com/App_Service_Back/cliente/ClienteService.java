@@ -30,7 +30,8 @@ public class ClienteService {
     //update cliente
     public ClienteDTO update(Long id, ClienteDTO clienteDTO) {
         Cliente cliente = clienteRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Cliente não encontrado"));
-        clienteMapper.updateEntity(clienteDTO, cliente);
+        clienteDTO.setCliente_id(id);
+        cliente = clienteMapper.updateEntity(clienteDTO, cliente);
         cliente = clienteRepository.save(cliente);
         return clienteMapper.toDTO(cliente);
     }
