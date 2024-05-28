@@ -1,12 +1,15 @@
 package com.App_Service_Back.prestador;
 
 import com.App_Service_Back.endereco.Endereco;
+import com.App_Service_Back.servicos.Servicos;
+import com.App_Service_Back.telefone.Telefone;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Data
@@ -36,7 +39,7 @@ public class PrestadorDTO implements Serializable {
 
     private Endereco endereco;
 
-//    private List<Servicos> servicos;
-//
-//    private List<Telefone> telefones;
+    private List<Servicos> servicos;
+
+    private List<Telefone> telefones;
 }

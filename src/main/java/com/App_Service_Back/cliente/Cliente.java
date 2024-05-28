@@ -30,9 +30,9 @@ public class Cliente implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cliente_endereco_id")
     private Endereco endereco;
-    @OneToMany(mappedBy = "telefone_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Telefone> telefones;
-    @OneToMany(mappedBy = "agendamento_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
 
 

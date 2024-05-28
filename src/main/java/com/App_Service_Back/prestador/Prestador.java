@@ -27,14 +27,14 @@ public class Prestador implements Serializable {
     @Column(unique = true)
     private  String prestador_email;
     private String prestador_senha;
-    @OneToMany(mappedBy = "servico_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Servicos> servicos;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "prestador_endereco_id", nullable = false)
     private Endereco endereco;
 
-    @OneToMany(mappedBy = "telefone_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Telefone> telefones;
 
     public Prestador() {

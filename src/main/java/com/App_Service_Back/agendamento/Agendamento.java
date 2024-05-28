@@ -25,14 +25,14 @@ public class Agendamento implements Serializable {
     @JsonFormat(shape= JsonFormat.Shape.STRING, pattern ="dd/MM/yyyy")
     private LocalDate agendamento_data = LocalDate.now();
     @Temporal(TemporalType.TIME)
-    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern ="HH:MM")
+    @JsonFormat(shape= JsonFormat.Shape.STRING, pattern ="HH:mm")
     private LocalTime agendamento_hora;
     private String agendamento_observacoes;
     @Enumerated(EnumType.STRING)
     private StatusEnum agendamento_status;
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "agendamento_cliente_id")
-//    private Cliente cliente;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "agendamento_cliente_id")
+    private Cliente cliente;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "agendamento_servico_id")
     private Servicos servicos;
@@ -47,7 +47,7 @@ public class Agendamento implements Serializable {
         this.agendamento_hora = agendamento_hora;
         this.agendamento_observacoes = agendamento_observacoes;
         this.agendamento_status = agendamento_status;
-//        this.cliente = cliente;
+        this.cliente = cliente;
         this.servicos = servicos;
     }
 
@@ -91,13 +91,13 @@ public class Agendamento implements Serializable {
         this.agendamento_status = agendamento_status;
     }
 
-//    public Cliente getCliente() {
-//        return cliente;
-//    }
-//
-//    public void setCliente(Cliente cliente) {
-//        this.cliente = cliente;
-//    }
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     public Servicos getServicos() {
         return servicos;

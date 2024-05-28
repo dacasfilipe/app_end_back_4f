@@ -18,7 +18,7 @@ public class Categoria implements Serializable {
     private Long categoria_id;
     private String categoria_nome;
     private String categoria_descricao;
-    @OneToMany(mappedBy = "servico_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Servicos> servicos;
 
 

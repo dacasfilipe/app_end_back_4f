@@ -1,11 +1,17 @@
 package com.App_Service_Back.endereco;
 
+import com.App_Service_Back.cliente.Cliente;
+import com.App_Service_Back.prestador.Prestador;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,4 +32,8 @@ public class EnderecoDTO implements Serializable {
     private String endereco_estado;
     @NotNull(message = "O campo BAIRRO é requerido")
     private String endereco_bairro;
+
+    private List<Cliente> clientes;
+
+    private List<Prestador> prestadores;
 }

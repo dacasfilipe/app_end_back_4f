@@ -24,10 +24,10 @@ public class Endereco implements Serializable {
     private String endereco_estado;
     private String endereco_bairro;
     @JsonIgnore
-    @OneToMany(mappedBy = "cliente_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Cliente> clientes;
     @JsonIgnore
-    @OneToMany(mappedBy = "prestador_id", fetch = FetchType.EAGER)
+    @OneToMany( fetch = FetchType.EAGER)
     private List<Prestador> prestadores;
 
     public Endereco() {

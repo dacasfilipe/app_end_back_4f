@@ -1,6 +1,8 @@
 package com.App_Service_Back.cliente;
 
+import com.App_Service_Back.agendamento.AgendamentoDTO;
 import com.App_Service_Back.endereco.Endereco;
+import com.App_Service_Back.telefone.TelefoneDTO;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.validation.constraints.NotNull;
@@ -10,6 +12,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.br.CPF;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Data
@@ -32,7 +35,7 @@ public class ClienteDTO implements Serializable {
 
     private Endereco endereco;
 
-    //private List<TelefoneDTO> telefones;
+    private List<TelefoneDTO> telefones;
 
-    //private List<AgendamentoDTO> agendamentos;
+    private List<AgendamentoDTO> agendamentos;
 }
