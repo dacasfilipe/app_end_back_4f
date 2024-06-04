@@ -20,11 +20,13 @@ public class Cliente implements Serializable {
     private Long cliente_id;
     private String cliente_nome;
     @CPF
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String cliente_cpf;
     @Column(unique = true)
     private String cliente_email;
+    @Column(nullable = false)
     private String cliente_senha;
+    @Column(nullable = false)
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate cliente_dataNascimento;
     @ManyToOne(fetch = FetchType.EAGER)
