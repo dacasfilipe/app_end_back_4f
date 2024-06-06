@@ -1,7 +1,5 @@
 package com.App_Service_Back.categoria;
 
-import com.App_Service_Back.agendamento.Agendamento;
-import com.App_Service_Back.cliente.Cliente;
 import com.App_Service_Back.servicos.Servicos;
 import jakarta.persistence.*;
 

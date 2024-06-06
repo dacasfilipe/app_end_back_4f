@@ -17,7 +17,7 @@ public class Endereco implements Serializable {
     private Long endereco_id;
     private String endereco_rua;
     private String endereco_cep;
-    @Column(unique = true)
+    @Column(unique = false)
     private Integer endereco_numero;
     private String endereco_complemento;
     private String endereco_cidade;

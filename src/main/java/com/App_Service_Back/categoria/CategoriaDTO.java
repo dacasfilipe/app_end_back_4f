@@ -13,10 +13,14 @@ import java.util.List;
 @NoArgsConstructor
 public class CategoriaDTO implements Serializable {
     private static final long serialVersionUID = 1L;
+
     private Long categoria_id;
+
     @NotNull(message = "O campo NOME é requerido")
     private String categoria_nome;
+
     @NotNull(message = "O campo DESCRICAO é requerido")
     private String categoria_descricao;
+
     private List<ServicosDTO> servicos;
 }
