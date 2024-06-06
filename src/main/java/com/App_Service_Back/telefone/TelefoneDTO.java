@@ -22,10 +22,8 @@ public class TelefoneDTO implements Serializable {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "(XX) XXXXX-XXXX")
     private String telefone_numero;
 
-    @NotNull(message = "O campo CLIENTE é requerido")
     private Cliente cliente;
 
-    @NotNull(message = "O campo PRESTADOR é requerido")
     private Prestador prestador;
 
 }

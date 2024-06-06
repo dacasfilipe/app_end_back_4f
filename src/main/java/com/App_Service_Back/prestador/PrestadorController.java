@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController //habilitar o REST
 @RequestMapping("/prestador") // localhost:8080/prestador
 public class PrestadorController {

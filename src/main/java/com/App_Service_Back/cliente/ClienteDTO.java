@@ -33,6 +33,8 @@ public class ClienteDTO implements Serializable {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate cliente_dataNascimento;
 
+//    private String telefone_numero;
+
     private Endereco endereco;
 
     private List<TelefoneDTO> telefones;

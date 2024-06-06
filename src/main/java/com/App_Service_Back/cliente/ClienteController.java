@@ -1,5 +1,7 @@
 package com.App_Service_Back.cliente;
 
+import com.App_Service_Back.telefone.TelefoneDTO;
+import com.App_Service_Back.telefone.TelefoneService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,13 @@ import java.util.List;
 public class ClienteController {
     @Autowired
     private ClienteService clienteService;
+
+    @Autowired
+    private TelefoneService telefoneService;
+
+    @Autowired
+    private ClienteMapper clienteMapper;
+
     @GetMapping //retorna uma lista de clientes
     public ResponseEntity<List<ClienteDTO>> getAllClientes(){
         List<ClienteDTO> clienteDTO = clienteService.findAll();
@@ -25,7 +34,13 @@ public class ClienteController {
     }
     @PostMapping //salvar um cliente no banco de dados
     public ResponseEntity<ClienteDTO> createCliente(@Valid @RequestBody ClienteDTO clienteDTO){
+
         ClienteDTO createClienteDTO = clienteService.create(clienteDTO);
+//        TelefoneDTO telefoneDTO = new TelefoneDTO();
+//        telefoneDTO.setTelefone_numero(clienteDTO.getTelefone_numero());
+//        Cliente cliente = clienteMapper.toEntity(createClienteDTO);
+//        telefoneDTO.setCliente(cliente);
+//        telefoneService.create(telefoneDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createClienteDTO);
     }
     @PutMapping("/{id}")
