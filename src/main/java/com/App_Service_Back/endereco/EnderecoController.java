@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController //habilitar o REST
 @RequestMapping("/endereco") // localhost:8080/endereco
 public class EnderecoController {
