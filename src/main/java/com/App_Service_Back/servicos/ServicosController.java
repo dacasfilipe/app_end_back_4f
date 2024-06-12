@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController //habilitar o REST
 @RequestMapping("/servicos") // localhost:8080/servicos
 public class ServicosController {
@@ -16,6 +16,7 @@ public class ServicosController {
     @GetMapping //retorna uma lista de servicos
     public ResponseEntity<List<ServicosDTO>> getAllServicos(){
         List<ServicosDTO> servicosDTO = servicosService.findAll();
+        System.out.println("servicosDTO"+servicosDTO);
         return ResponseEntity.ok(servicosDTO);
     }
     @GetMapping("/{id}") //localhost:8080/servicos/1 pegar por id
