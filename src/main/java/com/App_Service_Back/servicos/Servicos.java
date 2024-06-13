@@ -3,7 +3,7 @@ package com.App_Service_Back.servicos;
 import com.App_Service_Back.agendamento.Agendamento;
 import com.App_Service_Back.categoria.Categoria;
 import com.App_Service_Back.endereco.Endereco;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -37,7 +37,7 @@ public class Servicos implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "servico_prestadores_id", nullable = false)
-    private Prestador prestadores;
+    private Prestadores prestadores;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;

@@ -1,7 +1,7 @@
 package com.App_Service_Back.endereco;
 
 import com.App_Service_Back.cliente.Cliente;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.FetchType;
@@ -35,5 +35,5 @@ public class EnderecoDTO implements Serializable {
 
     private List<Cliente> clientes;
 
-    private List<Prestador> prestadores;
+    private List<Prestadores> prestadores;
 }

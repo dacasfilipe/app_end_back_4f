@@ -1,6 +1,6 @@
 package com.App_Service_Back.cliente;
 
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.App_Service_Back.prestador.PrestadorDTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;

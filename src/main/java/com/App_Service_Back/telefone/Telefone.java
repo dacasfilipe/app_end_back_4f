@@ -1,7 +1,7 @@
 package com.App_Service_Back.telefone;
 
 import com.App_Service_Back.cliente.Cliente;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -29,7 +29,7 @@ public class Telefone implements Serializable {
     private Cliente cliente;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "telefone_prestador_id")
-    private Prestador prestador;
+    private Prestadores prestador;
 
 
 

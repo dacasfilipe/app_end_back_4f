@@ -1,7 +1,7 @@
 package com.App_Service_Back.endereco;
 
 import com.App_Service_Back.cliente.Cliente;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
@@ -28,7 +28,7 @@ public class Endereco implements Serializable {
     private List<Cliente> clientes;
     @JsonIgnore
     @OneToMany( fetch = FetchType.EAGER)
-    private List<Prestador> prestadores;
+    private List<Prestadores> prestadores;
 
     public Endereco() {
     }
@@ -116,11 +116,11 @@ public class Endereco implements Serializable {
         this.clientes = clientes;
     }
 
-    public List<Prestador> getPrestadores() {
+    public List<Prestadores> getPrestadores() {
         return prestadores;
     }
 
-    public void setPrestadores(List<Prestador> prestadores) {
+    public void setPrestadores(List<Prestadores> prestadores) {
         this.prestadores = prestadores;
     }
 

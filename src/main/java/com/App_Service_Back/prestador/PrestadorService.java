@@ -13,23 +13,23 @@ public class PrestadorService {
 
     //buscando todos os prestadores
     public List<PrestadorDTO> findAll(){
-        List<Prestador> prestadores = prestadorRepository.findAll();
+        List<Prestadores> prestadores = prestadorRepository.findAll();
         return prestadores.stream().map(prestadorMapper::toDTO).collect(Collectors.toList());
     }
     // buscar pelo id
     public PrestadorDTO findById(Long id){
-        Prestador prestador = prestadorRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Prestador não encontrado"));
+        Prestadores prestador = prestadorRepository.findById(id).orElseThrow(()->new IllegalArgumentException("Prestador não encontrado"));
         return prestadorMapper.toDTO(prestador);
     }
     //criando um novo prestador
     public PrestadorDTO create(PrestadorDTO prestadorDTO){
-        Prestador prestador = prestadorMapper.toEntity(prestadorDTO);
+        Prestadores prestador = prestadorMapper.toEntity(prestadorDTO);
         prestador = prestadorRepository.save(prestador);
         return prestadorMapper.toDTO(prestador);
     }
     //update prestador
     public PrestadorDTO update(Long id, PrestadorDTO prestadorDTO) {
-        Prestador prestador = prestadorRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Prestador não encontrado"));
+        Prestadores prestador = prestadorRepository.findById(id).orElseThrow(()-> new IllegalArgumentException("Prestador não encontrado"));
         prestadorDTO.setPrestador_id(id);
         prestador = prestadorMapper.updateEntity(prestadorDTO, prestador);
         prestador = prestadorRepository.save(prestador);

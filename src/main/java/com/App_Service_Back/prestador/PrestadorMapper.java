@@ -9,12 +9,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PrestadorMapper {
     @Mapping(source = "prestador_id", target = "prestador_id")
-    PrestadorDTO toDTO(Prestador prestador);
+    PrestadorDTO toDTO(Prestadores prestador);
     @Mapping(source = "prestadorDTO.prestador_id", target = "prestador_id")
-    Prestador toEntity(PrestadorDTO prestadorDTO);
+    Prestadores toEntity(PrestadorDTO prestadorDTO);
 
     //recebendo lista de prestadores do banco em DTO
-    List<PrestadorDTO> toDTO(List<Prestador> prestadores);
+    List<PrestadorDTO> toDTO(List<Prestadores> prestadores);
 
     @Mappings({
             @Mapping(source = "prestadorDTO.prestador_id", target = "prestador_id"),
@@ -29,5 +29,5 @@ public interface PrestadorMapper {
             @Mapping(source = "prestadorDTO.telefones", target = "telefones"),
 
     })
-    Prestador updateEntity(PrestadorDTO prestadorDTO, Prestador prestador);
+    Prestadores updateEntity(PrestadorDTO prestadorDTO, Prestadores prestador);
 }

@@ -3,7 +3,7 @@ package com.App_Service_Back.agendamento;
 import com.App_Service_Back.categoria.Categoria;
 import com.App_Service_Back.cliente.Cliente;
 import com.App_Service_Back.enums.StatusEnum;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.App_Service_Back.servicos.Servicos;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;

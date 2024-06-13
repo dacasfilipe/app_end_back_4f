@@ -1,6 +1,6 @@
 package com.App_Service_Back.servicos;
 
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import com.App_Service_Back.prestador.PrestadorDTO;
 import com.App_Service_Back.prestador.PrestadorMapper;
 import com.App_Service_Back.prestador.PrestadorRepository;

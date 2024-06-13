@@ -2,7 +2,7 @@ package com.App_Service_Back.servicos;
 
 import com.App_Service_Back.agendamento.Agendamento;
 import com.App_Service_Back.categoria.Categoria;
-import com.App_Service_Back.prestador.Prestador;
+import com.App_Service_Back.prestador.Prestadores;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -33,7 +33,7 @@ public class ServicosDTO {
     private Categoria categorias;
 
     @NotNull(message = "O campo PRESTADORES é requerido")
-    private Prestador prestadores;
+    private Prestadores prestadores;
 
     private List<Agendamento> agendamentos;
 
