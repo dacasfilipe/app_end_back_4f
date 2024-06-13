@@ -1,5 +1,6 @@
 package com.App_Service_Back.servicos;
 
+import com.App_Service_Back.prestador.PrestadorDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,12 @@ public class ServicosController {
     public ResponseEntity<Void> deleteServicos(@PathVariable Long id){
         servicosService.deleteById(id);
         return ResponseEntity.noContent().build();
+    }
+
+    // Optional method to expose prestadores by service ID (consider security implications)
+    @GetMapping("/{servicoId}/prestadores")
+    public ResponseEntity<List<PrestadorDTO>> getPrestadoresByServicoId(@PathVariable Long servicoId) {
+        List<PrestadorDTO> prestadores = servicosService.getPrestadoresByServicoId(servicoId);
+        return ResponseEntity.ok(prestadores);
     }
 }

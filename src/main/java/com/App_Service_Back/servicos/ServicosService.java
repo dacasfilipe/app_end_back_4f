@@ -1,11 +1,10 @@
 package com.App_Service_Back.servicos;
 
-import com.App_Service_Back.prestador.Prestadores;
-import com.App_Service_Back.prestador.PrestadorDTO;
-import com.App_Service_Back.prestador.PrestadorMapper;
-import com.App_Service_Back.prestador.PrestadorRepository;
+import com.App_Service_Back.prestador.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,6 +15,8 @@ public class ServicosService {
     private ServicosRepository servicosRepository;
     @Autowired
     private ServicosMapper servicosMapper;
+    @Autowired
+    private PrestadorService prestadorService;
 
     //buscando todos os servicos
     public List<ServicosDTO> findAll(){
@@ -44,4 +45,13 @@ public class ServicosService {
     public void deleteById(Long id){
         servicosRepository.deleteById(id);
     }
+
+    // New method to get prestadores by service ID
+    @GetMapping("/{servicoId}/prestadores")
+    public ResponseEntity<List<PrestadorDTO>> getPrestadoresByServicoId(@PathVariable Long servicoId) {
+        Servicos servicos = servicosRepository.findById(servicoId).orElseThrow(() -> new IllegalArgumentException("Serviço não encontrado"));
+        List<PrestadorDTO> prestadores = servicosService.findPrestadoresByServico(servicos);
+        return ResponseEntity.ok(prestadores);
+    }
+
 }

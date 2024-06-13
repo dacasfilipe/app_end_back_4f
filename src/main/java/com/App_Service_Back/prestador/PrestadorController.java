@@ -38,4 +38,5 @@ public class PrestadorController {
         prestadorService.deleteById(id);
         return ResponseEntity.noContent().build();
     }
+
 }

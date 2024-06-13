@@ -1,5 +1,6 @@
 package com.App_Service_Back.prestador;
 
+import com.App_Service_Back.servicos.Servicos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
@@ -38,4 +39,16 @@ public class PrestadorService {
     public void deleteById(Long id){
         prestadorRepository.deleteById(id);
     }
+
+    public List<PrestadorDTO> findPrestadoresByServico(Servicos servicos) {
+        List<Prestadores> prestadores = servicos.getServicos();
+
+        // Convert prestadores to DTOs
+        List<PrestadorDTO> prestadorDTOs = prestadores.stream()
+                .map(prestadorMapper::toDTO)
+                .collect(Collectors.toList());
+
+        return prestadorDTOs
+    }
+
 }
