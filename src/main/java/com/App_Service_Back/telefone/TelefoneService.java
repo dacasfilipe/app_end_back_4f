@@ -25,6 +25,7 @@ public class TelefoneService {
     }
     //criando um novo telefone
     public TelefoneDTO create(TelefoneDTO telefoneDTO){
+        System.out.println("telefoneDTO:"+telefoneDTO);
         Telefone telefone = telefoneMapper.toEntity(telefoneDTO);
         telefone = telefoneRepository.save(telefone);
         return telefoneMapper.toDTO(telefone);

@@ -32,16 +32,17 @@ public class Servicos implements Serializable {
     private String servico_informacoesExtras;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "servico_categorias_id", nullable = false)
+    @JoinColumn(name = "servico_categorias_id")
     private Categoria categorias;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "servico_prestadores_id", nullable = false)
+    @JoinColumn(name = "servico_prestadores_id")
     private Prestadores prestadores;
 
     @OneToMany(fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
 
     private String servico_classificacao;
+
 
 }

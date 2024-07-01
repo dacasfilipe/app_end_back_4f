@@ -11,6 +11,24 @@ public class ClienteService {
     @Autowired
     private ClienteMapper clienteMapper;
 
+//    @Autowired
+//    private BCryptPasswordEncoder passwordEncoder;
+
+    //criando um novo cliente
+//    public ClienteDTO create(ClienteDTO clienteDTO) {
+//        Cliente cliente = new Cliente();
+//        cliente.setCliente_nome(clienteDTO.getCliente_nome());
+//        cliente.setCliente_cpf(clienteDTO.getCliente_cpf());
+//        cliente.setEmail(clienteDTO.getEmail());
+//        cliente.setCliente_senha(passwordEncoder.encode(clienteDTO.getCliente_senha()));
+//        cliente.setCliente_dataNascimento(clienteDTO.getCliente_dataNascimento());
+//        cliente.setEndereco(clienteDTO.getEndereco());
+//
+//        cliente = clienteMapper.toEntity(clienteDTO);
+//        cliente = clienteRepository.save(cliente);
+//
+//        return clienteMapper.toDTO(cliente);
+//    }
     //buscando todos os clientes
     public List<ClienteDTO> findAll(){
         List<Cliente> clientes = clienteRepository.findAll();

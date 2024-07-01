@@ -25,7 +25,6 @@ public class Prestadores implements Serializable {
     private  String prestador_nome;
     @Column(unique = true)
     private  String prestador_cnpj;
-    @CPF
     @Column(unique = true)
     private  String prestador_cpf;
     private  String prestador_razaoSocial;
@@ -35,7 +34,7 @@ public class Prestadores implements Serializable {
     @OneToMany(fetch = FetchType.EAGER)
     private List<Servicos> servicos;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "prestador_endereco_id", nullable = false)
+    @JoinColumn(name = "prestador_endereco_id")
     private Endereco endereco;
 
     @OneToMany( fetch = FetchType.EAGER)

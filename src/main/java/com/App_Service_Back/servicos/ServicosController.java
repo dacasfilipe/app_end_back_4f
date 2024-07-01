@@ -42,9 +42,9 @@ public class ServicosController {
     }
 
     // Optional method to expose prestadores by service ID (consider security implications)
-    @GetMapping("/{servicoId}/prestadores")
-    public ResponseEntity<List<PrestadorDTO>> getPrestadoresByServicoId(@PathVariable Long servicoId) {
-        List<PrestadorDTO> prestadores = servicosService.getPrestadoresByServicoId(servicoId);
-        return ResponseEntity.ok(prestadores);
-    }
+//    @GetMapping("/{servicoId}/prestadores")
+//    public ResponseEntity<List<PrestadorDTO>> getPrestadoresByServicoId(@PathVariable Long servicoId) {
+//        List<PrestadorDTO> prestadores = servicosService.getPrestadoresByServicoId(servicoId);
+//        return ResponseEntity.ok(prestadores);
+//    }
 }

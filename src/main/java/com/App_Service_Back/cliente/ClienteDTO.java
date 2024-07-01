@@ -14,7 +14,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,11 +22,11 @@ public class ClienteDTO implements Serializable {
     private Long cliente_id;
     @NotNull(message = "O campo NOME é requerido")
     private String cliente_nome;
-    @CPF
+
     @NotNull(message = "O campo CPF é requerido")
     private String cliente_cpf;
     @NotNull(message = "O campo EMAIL é requerido")
-    private String cliente_email;
+    private String email;
     private String cliente_senha;
     @NotNull(message = "O campo DATA DE NASCIMENTO é requerido")
     @JsonFormat(pattern = "yyyy-MM-dd")

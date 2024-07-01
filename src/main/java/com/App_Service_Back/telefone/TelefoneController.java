@@ -26,6 +26,7 @@ public class TelefoneController {
     }
     @PostMapping //salvar um telefone no banco de dados
     public ResponseEntity<TelefoneDTO> createTelefone(@Valid @RequestBody TelefoneDTO telefoneDTO){
+        System.out.println("telefoneDTO:"+telefoneDTO);
         TelefoneDTO createTelefoneDTO = telefoneService.create(telefoneDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createTelefoneDTO);
     }
