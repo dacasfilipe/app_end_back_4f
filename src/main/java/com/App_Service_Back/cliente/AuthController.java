@@ -27,6 +27,7 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         Optional<Cliente> cliente = clienteService.findByEmail(loginRequest.getEmail());
+        System.out.println(cliente);
         if (cliente.isPresent() && passwordEncoder.matches(loginRequest.getCliente_senha(), cliente.get().getCliente_senha())) {
             String token = jwtTokenService.generateToken(cliente.get().getEmail());
             Map<String, String> response = new HashMap<>();

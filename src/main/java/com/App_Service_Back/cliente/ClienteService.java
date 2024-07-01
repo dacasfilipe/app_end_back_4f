@@ -45,11 +45,13 @@ public class ClienteService {
         return clienteMapper.toDTO(cliente);
     }
     //criando um novo cliente
-    public ClienteDTO create(ClienteDTO clienteDTO){
+    public ClienteDTO create(ClienteDTO clienteDTO) {
         Cliente cliente = clienteMapper.toEntity(clienteDTO);
-        //encriptograr a senha
+        System.out.println("Cliente antes de criptografar a senha: " + cliente);
         cliente.setCliente_senha(passwordEncoder.encode(clienteDTO.getCliente_senha()));
+        System.out.println("Cliente depois de criptografar a senha: " + cliente);
         cliente = clienteRepository.save(cliente);
+        System.out.println("Cliente salvo: " + cliente);
         return clienteMapper.toDTO(cliente);
     }
     //update cliente

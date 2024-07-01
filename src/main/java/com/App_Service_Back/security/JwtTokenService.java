@@ -1,39 +1,57 @@
 package com.App_Service_Back.security;
 
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
-import org.springframework.beans.factory.annotation.Value;
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.exceptions.JWTCreationException;
+import com.auth0.jwt.exceptions.JWTVerificationException;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 
 @Service
 public class JwtTokenService {
 
-    @Value("${jwt.secret}")
-    private String secret;
+    private static final String SECRET_KEY = "4Z^XrroxR@dWxqf$mTTKwW$!@#qGr4P"; // Chave secreta utilizada para gerar e verificar o token
 
-    @Value("${jwt.expiration}")
-    private Long expiration;
+    private static final String ISSUER = "pizzurg-api"; // Emissor do token
 
-    public String generateToken(String username) {
-        return Jwts.builder()
-                .setSubject(username)
-                .setExpiration(new Date(System.currentTimeMillis() + expiration))
-                .signWith(SignatureAlgorithm.HS512, secret)
-                .compact();
-    }
-
-    public boolean validateToken(String token) {
+    public String generateToken(String user) {
         try {
-            Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
-            return true;
-        } catch (Exception e) {
-            return false;
+            // Define o algoritmo HMAC SHA256 para criar a assinatura do token passando a chave secreta definida
+            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+            return JWT.create()
+                    .withIssuer(ISSUER) // Define o emissor do token
+                    .withIssuedAt(creationDate()) // Define a data de emissão do token
+                    .withExpiresAt(expirationDate()) // Define a data de expiração do token
+                    .withSubject(user.intern()) // Define o assunto do token (neste caso, o nome de usuário)
+                    .sign(algorithm); // Assina o token usando o algoritmo especificado
+        } catch (JWTCreationException exception){
+            throw new JWTCreationException("Erro ao gerar token.", exception);
         }
     }
 
-    public String getUsernameFromToken(String token) {
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody().getSubject();
+    public String getSubjectFromToken(String token) {
+        try {
+            // Define o algoritmo HMAC SHA256 para verificar a assinatura do token passando a chave secreta definida
+            Algorithm algorithm = Algorithm.HMAC256(SECRET_KEY);
+            return JWT.require(algorithm)
+                    .withIssuer(ISSUER) // Define o emissor do token
+                    .build()
+                    .verify(token) // Verifica a validade do token
+                    .getSubject(); // Obtém o assunto (neste caso, o nome de usuário) do token
+        } catch (JWTVerificationException exception){
+            throw new JWTVerificationException("Token inválido ou expirado.");
+        }
     }
+
+    private Instant creationDate() {
+        return ZonedDateTime.now(ZoneId.of("America/Recife")).toInstant();
+    }
+
+    private Instant expirationDate() {
+        return ZonedDateTime.now(ZoneId.of("America/Recife")).plusHours(4).toInstant();
+    }
+
 }
