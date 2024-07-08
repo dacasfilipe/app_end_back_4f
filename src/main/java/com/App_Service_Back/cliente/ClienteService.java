@@ -1,6 +1,5 @@
 package com.App_Service_Back.cliente;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -13,8 +12,8 @@ public class ClienteService {
     @Autowired
     private ClienteMapper clienteMapper;
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+//    @Autowired
+//    private PasswordEncoder passwordEncoder;
 
 //    @Autowired
 //    private BCryptPasswordEncoder passwordEncoder;
@@ -47,9 +46,9 @@ public class ClienteService {
     //criando um novo cliente
     public ClienteDTO create(ClienteDTO clienteDTO) {
         Cliente cliente = clienteMapper.toEntity(clienteDTO);
-        System.out.println("Cliente antes de criptografar a senha: " + cliente);
-        cliente.setCliente_senha(passwordEncoder.encode(clienteDTO.getCliente_senha()));
-        System.out.println("Cliente depois de criptografar a senha: " + cliente);
+//        System.out.println("Cliente antes de criptografar a senha: " + cliente);
+//        cliente.setCliente_senha(passwordEncoder.encode(clienteDTO.getCliente_senha()));
+//        System.out.println("Cliente depois de criptografar a senha: " + cliente);
         cliente = clienteRepository.save(cliente);
         System.out.println("Cliente salvo: " + cliente);
         return clienteMapper.toDTO(cliente);
@@ -66,7 +65,7 @@ public class ClienteService {
         clienteRepository.deleteById(id);
     }
 
-    public Optional<Cliente> findByEmail(String email) {
+    public Cliente findByEmail(String email) {
         return clienteRepository.findByEmail(email);
     }
 }

@@ -39,4 +39,8 @@ public class ClienteDTO implements Serializable {
     private List<TelefoneDTO> telefones;
 
     private List<AgendamentoDTO> agendamentos;
+
+    public void setCliente_id(Long id) {
+
+    }
 }

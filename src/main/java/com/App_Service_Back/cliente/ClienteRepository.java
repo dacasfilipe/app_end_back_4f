@@ -7,6 +7,6 @@ import java.util.Optional;
 
 public interface ClienteRepository extends JpaRepository<Cliente,Long> {
     //cria uma interface para ser implementada
-    Optional<Cliente> findByEmail(String email);
+    Cliente findByEmail(String email);
 
 }

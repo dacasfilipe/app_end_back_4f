@@ -41,6 +41,10 @@ public class Cliente implements Serializable {
     private List<Telefone> telefones;
     @OneToMany(fetch = FetchType.EAGER)
     private List<Agendamento> agendamentos;
+
+    public String getCliente_senha() {
+        return this.cliente_senha;
+    }
 }
 
 

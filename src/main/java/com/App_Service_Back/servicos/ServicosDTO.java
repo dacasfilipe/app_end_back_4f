@@ -38,4 +38,7 @@ public class ServicosDTO {
     private List<Agendamento> agendamentos;
 
     private String servico_classificacao;
+
+    public void setServico_id(Long id) {
+    }
 }

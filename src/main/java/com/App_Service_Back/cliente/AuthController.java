@@ -1,14 +1,11 @@
 package com.App_Service_Back.cliente;
 
-import com.App_Service_Back.security.JwtTokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/auth")
@@ -16,25 +13,22 @@ import java.util.Optional;
 public class AuthController {
 
     @Autowired
-    private ClienteService clienteService;
-
-    @Autowired
-    private JwtTokenService jwtTokenService;
-
-    @Autowired
-    private PasswordEncoder passwordEncoder;
+    private AuthService authService;
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
-        Optional<Cliente> cliente = clienteService.findByEmail(loginRequest.getEmail());
-        System.out.println(cliente);
-        if (cliente.isPresent() && passwordEncoder.matches(loginRequest.getCliente_senha(), cliente.get().getCliente_senha())) {
-            String token = jwtTokenService.generateToken(cliente.get().getEmail());
+    public ResponseEntity<?> login(@RequestBody Map<String, String> credentials) {
+        String email = credentials.get("email");
+        String senha = credentials.get("cliente_senha");
+        System.out.println(email);
+        System.out.println(senha);
+
+        String token = authService.authenticate(email, senha);
+        if (token != null) {
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
             return ResponseEntity.ok(response);
         } else {
-            return ResponseEntity.status(401).build();
+            return ResponseEntity.status(401).body("Invalid credentials");
         }
     }
 }
