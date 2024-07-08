@@ -57,6 +57,7 @@ public class PrestadorController {
 
         try {
             List<PrestadorDTO> prestadores = prestadorService.findByServicoNome(servicoNome);
+            System.out.println("lista de prestadores:"+prestadores);
             return ResponseEntity.ok(prestadores);
         } catch (Exception e) {
             // Log the exception (e.g., using SLF4J or another logging framework)
